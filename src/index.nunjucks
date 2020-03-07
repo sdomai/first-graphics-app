@@ -11,8 +11,34 @@
 {% endblock %}
 
 {% block content %}
+<section>
+<h3> Lives Lost at Harvard Park </h3>
+{# total number in the list of homicide victims, auto print into page #}
+<p>The {{ site.data.harvard_park_homicides|length }} homicides in Harvard Park since 2000 were primarily black and Latino males, but the list includes husbands, wives, fathers, mothers of all ages, and even some small children.</p>
+
+{# place the cards into columns #}
+<div class="card-columns">
 {# for objects in list, print objects #}
 {% for obj in site.data.harvard_park_homicides%} 
-  {{ obj.first_name}} {{ obj.last_name}} <br>
+    <div class="card">
+      <div class="card-body">
+        {% if obj.image %}
+        {# add images and alternative tag for image #}
+        <img class="card-img-top" src="{{ obj.image }}" alt="{{ obj.first_name }} {{ obj.last_name }}">
+        {% endif %}
+        {# link to individual person's page #}
+        <a href="https://homicide.latimes.com/post/{{ obj.slug }}/" target = "blank" >
+          {# first and last name #}
+          <h5 class="card-title">{{ obj.first_name }} {{ obj.last_name }}</h5>
+         </a> 
+        {# sentence #}
+        <p class="card-text">
+          {{ obj.last_name }}, a {{ obj.age }}-year-old 
+          {{ obj.race }} {{ obj.gender }}, died in {{ obj.death_year }}.
+        </p>
+      </div>
+    </div>
 {% endfor %}
+</div>
+</section>
 {% endblock %}
