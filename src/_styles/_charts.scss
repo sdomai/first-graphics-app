@@ -1,0 +1,35 @@
+.inline-chart {
+  width: 49%;
+  display: inline-block;
+}
+
+.chart-title {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+}
+
+.bar {
+  fill: firebrick;
+
+  //   &:hover {
+  //     fill: #d6322d;
+  //   }
+}
+
+.bar:hover {
+  fill: #db433e;
+}
+
+// take away top line restricting bars
+.domain {
+  display: none;
+}
+
+.x .tick line {
+  display: none;
+}
+// select every tick except for the first one
+.y .tick:not(:first-of-type) line {
+  stroke: #e7e7e7;
+}
