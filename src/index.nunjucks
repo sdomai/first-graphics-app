@@ -9,3 +9,10 @@
   March 7, 2020
 </time>
 {% endblock %}
+
+{% block content %}
+{# for objects in list, print objects #}
+{% for obj in site.data.harvard_park_homicides%} 
+  {{ obj.first_name}} {{ obj.last_name}} <br>
+{% endfor %}
+{% endblock %}
